@@ -7,6 +7,8 @@ class CreateProducts < ActiveRecord::Migration
       t.integer    :quantity
       t.timestamps
     end
+
+    add_index :products, :tenant_id
   end
 
   def self.down

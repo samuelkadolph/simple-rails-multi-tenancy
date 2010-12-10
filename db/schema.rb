@@ -10,7 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101210044554) do
+ActiveRecord::Schema.define(:version => 20101210055112) do
+
+  create_table "products", :force => true do |t|
+    t.integer  "tenant_id"
+    t.string   "name"
+    t.text     "description"
+    t.integer  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tenants", :force => true do |t|
     t.string   "name"

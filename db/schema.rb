@@ -28,4 +28,6 @@ ActiveRecord::Schema.define(:version => 20101210055112) do
     t.datetime "updated_at"
   end
 
+  add_index "tenants", ["host"], :name => "index_tenants_on_host"
+
 end

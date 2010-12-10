@@ -5,6 +5,8 @@ class CreateTenants < ActiveRecord::Migration
       t.string     :host
       t.timestamps
     end
+
+    add_index :tenants, :host
   end
 
   def self.down

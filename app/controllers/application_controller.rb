@@ -1,8 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter do
-    @tenant = Tenant.current = Tenant.find_by_host(request.host)
-    render 'shared/no_such_tenant' unless @tenant
-  end
+  around_filter :with_tenant
+
+  protected
+    def with_tenant
+      Tenant.find_by_host!(request.host).with { yield }
+    end
 end

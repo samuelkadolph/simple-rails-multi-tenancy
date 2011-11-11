@@ -1,19 +1,34 @@
 class TenantScopedModel < ActiveRecord::Base
-  self.abstract_class = true
-
   class << self
-    protected
-      def current_scoped_methods
-        last = scoped_methods.last
-        last.respond_to?(:call) ? relation.scoping { last.call } : last
-      end      
+    def build_default_scope
+      if method(:default_scope).owner != ActiveRecord::Base.singleton_class
+        evaluate_default_scope { default_scope }
+      elsif default_scopes.any?
+        evaluate_default_scope do
+          default_scopes.inject(relation) do |default_scope, scope|
+            if scope.is_a?(Hash)
+              default_scope.apply_finder_options(scope)
+            elsif !scope.is_a?(ActiveRecord::Relation) && scope.respond_to?(:call)
+              if scope.respond_to?(:arity) && scope.arity == 1
+                scope = scope.call(self)
+              else
+                scope = scope.call
+              end
+              default_scope.merge(scope)
+            else
+              default_scope.merge(scope)
+            end
+          end
+        end
+      end
+    end
   end
+
+  self.abstract_class = true
 
   belongs_to :tenant
 
-  default_scope lambda { where('tenant_id = ?', Tenant.current) }
-
-  before_create do
-    self.tenant = Tenant.current
+  default_scope do |model|
+    model.where(:tenant_id => Tenant.current)
   end
 end

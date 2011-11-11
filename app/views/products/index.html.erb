@@ -15,13 +15,13 @@
     <td><%= product.name %></td>
     <td><%= product.description %></td>
     <td><%= product.quantity %></td>
-    <td><%= link_to 'Show', product %></td>
-    <td><%= link_to 'Edit', edit_product_path(product) %></td>
-    <td><%= link_to 'Destroy', product, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to "Show", product %></td>
+    <td><%= link_to "Edit", edit_product_path(product) %></td>
+    <td><%= link_to "Destroy", product, confirm: "Are you sure?", method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Product', new_product_path %>
+<%= link_to "New Product", new_product_path %>

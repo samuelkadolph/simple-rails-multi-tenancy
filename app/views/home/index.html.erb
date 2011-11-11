@@ -1,4 +1,4 @@
 <h1>Home</h1>
 <p>Welcome to the Simple Rails Multi-Tenant Application</p>
-<p>You are using the <b><%= @tenant.name %></b> tenant of this application.</p>
-<p>View the <%= link_to 'products for this tenant', products_path %>.</p>
+<p>You are using the <b><%= current_tenant.name %></b> tenant of this application.</p>
+<p>View the <%= link_to "products for this tenant", products_path %>.</p>

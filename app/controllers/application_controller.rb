@@ -4,7 +4,12 @@ class ApplicationController < ActionController::Base
   around_filter :with_tenant
 
   protected
+    def current_tenant
+      @current_tenant
+    end
+
     def with_tenant
-      Tenant.find_by_host!(request.host).with { yield }
+      @current_tenant = Tenant.find_by_host!(request.host)
+      @current_tenant.with { yield }
     end
 end

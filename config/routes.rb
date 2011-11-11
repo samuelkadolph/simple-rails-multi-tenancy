@@ -1,5 +1,5 @@
 SimpleRailsMultiTenancy::Application.routes.draw do
   resources :products
 
-  root :to => 'home#index'
+  root to: "home#index"
 end

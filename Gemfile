@@ -2,12 +2,11 @@ source "http://rubygems.org"
 
 gem "jquery-rails"
 gem "rails", "3.1.1"
-gem "sqlite3"
-gem "unicorn"
 
 group :assets do
-  gem "sass-rails",   "~> 3.1.4"
   gem "coffee-rails", "~> 3.1.1"
+  gem "sass-rails",   "~> 3.1.4"
+  gem "sqlite3"
   gem "uglifier", ">= 1.0.3"
 end
 
@@ -17,4 +16,5 @@ end
 
 group :production do
   gem "pg"
+  gem "unicorn"
 end

@@ -15,9 +15,9 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: abc_development
+  database: simple_rails_multi_tenancy_development
   pool: 5
-  username: abc
+  username: simple_rails_multi_tenancy
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -41,15 +41,15 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: abc_test
+  database: simple_rails_multi_tenancy_test
   pool: 5
-  username: abc
+  username: simple_rails_multi_tenancy
   password:
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: abc_production
+  database: simple_rails_multi_tenancy_production
   pool: 5
-  username: abc
+  username: simple_rails_multi_tenancy
   password:

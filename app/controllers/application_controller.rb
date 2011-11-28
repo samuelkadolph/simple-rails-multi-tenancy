@@ -9,5 +9,7 @@ class ApplicationController < ActionController::Base
     def with_tenant
       @current_tenant = Tenant.find_by_host!(request.host)
       @current_tenant.with { yield }
+    rescue ActiveRecord::RecordNotFound
+      render "no_such_tenant"
     end
 end

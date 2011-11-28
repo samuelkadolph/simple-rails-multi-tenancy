@@ -1,5 +1,3 @@
 module ApplicationHelper
-  def current_tenant
-    @current_tenant
-  end
+  attr_reader :current_tenant
 end

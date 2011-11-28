@@ -4,9 +4,7 @@ class ApplicationController < ActionController::Base
   around_filter :with_tenant
 
   protected
-    def current_tenant
-      @current_tenant
-    end
+    attr_reader :current_tenant
 
     def with_tenant
       @current_tenant = Tenant.find_by_host!(request.host)

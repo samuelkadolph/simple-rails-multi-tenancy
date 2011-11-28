@@ -1,3 +1,3 @@
 class Product < TenantScopedModel
-  validates :name, :description, :quantity, :presence => true
+  validates :name, :description, :quantity, presence: true
 end

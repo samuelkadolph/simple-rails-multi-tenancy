@@ -9,7 +9,7 @@ class Tenant < ActiveRecord::Base
     end
   end
 
-  validates :name, :host, :presence => true
+  validates :name, :host, presence: true
 
   def with
     previous, Tenant.current = Tenant.current, self
